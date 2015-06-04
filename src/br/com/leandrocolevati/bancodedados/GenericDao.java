@@ -172,13 +172,10 @@ public class GenericDao {
 					}
 				} else {
 					if (sgbd.getValor() == 4) {
-						if (database == null) {
-							throw new SQLException("Database não informada");
-						} else {
-							sb.append("jdbc:odbc:Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ="+fileName);
-						}
+						sb.append("jdbc:odbc:Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ="
+								+ fileName);
 					} else {
-						throw new SQLException("SGBD não suportado");	
+						throw new SQLException("SGBD não suportado");
 					}
 				}
 			}
