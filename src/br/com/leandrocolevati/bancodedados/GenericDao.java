@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class GenericDao {
 
 	private Connection con;
-	private String ip;
+	private String ip = "localhost";
 	private String user;
 	private String password;
 	private String database;
@@ -82,9 +82,12 @@ public class GenericDao {
 	/**
 	 * Construtor para conexão com Access. Obrigatórios:
 	 * 
-	 * @param fileName (Caminho completo para o Arquivo mdb ou accdb)
-	 * @param user (Se não tiver usuário, utilizar vazio (""))
-	 * @param password (Se não tiver password, utilizar vazio (""))
+	 * @param fileName
+	 *            (Caminho completo para o Arquivo mdb ou accdb)
+	 * @param user
+	 *            (Se não tiver usuário, utilizar vazio (""))
+	 * @param password
+	 *            (Se não tiver password, utilizar vazio (""))
 	 * @param sgbd
 	 *            (Sgbd.ACCESS)
 	 */
@@ -94,7 +97,7 @@ public class GenericDao {
 		this.password = password;
 		this.sgbd = sgbd;
 	}
-	
+
 	/**
 	 * 
 	 * @return conexão com o SGBD selecionado ao instanciar GenericDao
