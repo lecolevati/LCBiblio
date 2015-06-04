@@ -129,7 +129,7 @@ public class Crud {
 
 	/**
 	 * Insere o conteúdo dos getters no Objeto model, na tabela de mesmo nome no
-	 * SGBD definido no Connection c
+	 * SGBD definido no Connection c (Só funcionando com SQL SERVER)
 	 * 
 	 * @param c
 	 *            - Conexão com o SGBD
@@ -195,7 +195,7 @@ public class Crud {
 	}
 
 	/**
-	 * Deleta linha que atende a todas as condições citadas no List<String> where
+	 * Deleta linha que atende a todas as condições citadas no List<String> where (Só funcionando com SQL SERVER)
 	 * @param c
 	 *            - Conexão com o SGBD
 	 * @param model
