@@ -2,7 +2,7 @@ package br.com.leandrocolevati.bancodedados;
 
 public enum Sgbd {
 
-	SQLSERVER(1), ORACLE(2), MYSQL(3);
+	SQLSERVER(1), ORACLE(2), MYSQL(3), ACCESS(4);
 	private final int valor;
 	private String nome;
 	private String driver;
@@ -24,7 +24,11 @@ public enum Sgbd {
 			nome = "MySQL";
 			driver = "org.gjt.mm.mysql.Driver";
 			break;
-		
+		case 4:
+			nome = "Access";
+			driver = "sun.jdbc.odbc.JdbcOdbcDriver";
+			break;		
+			
 		default:
 			nome = "Sql Server";
 			driver = "net.sourceforge.jtds.jdbc.Driver";

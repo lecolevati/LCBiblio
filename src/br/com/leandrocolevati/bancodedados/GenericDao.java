@@ -15,6 +15,7 @@ public class GenericDao {
 	private String password;
 	private String database;
 	private String sid;
+	private String fileName;
 	private boolean namedPipes;
 	private Sgbd sgbd;
 
@@ -67,7 +68,7 @@ public class GenericDao {
 	 * @param password
 	 * @param database
 	 * @param sgbd
-	 *            (Sgbd.SQLSERVER)
+	 *            (Sgbd.MYSQL)
 	 */
 	public GenericDao(String ip, String user, String password, Sgbd sgbd,
 			String database) {
@@ -78,6 +79,22 @@ public class GenericDao {
 		this.sgbd = sgbd;
 	}
 
+	/**
+	 * Construtor para conexão com Access. Obrigatórios:
+	 * 
+	 * @param fileName (Caminho completo para o Arquivo mdb ou accdb)
+	 * @param user (Se não tiver usuário, utilizar vazio (""))
+	 * @param password (Se não tiver password, utilizar vazio (""))
+	 * @param sgbd
+	 *            (Sgbd.ACCESS)
+	 */
+	public GenericDao(String fileName, String user, String password, Sgbd sgbd) {
+		this.fileName = fileName;
+		this.user = user;
+		this.password = password;
+		this.sgbd = sgbd;
+	}
+	
 	/**
 	 * 
 	 * @return conexão com o SGBD selecionado ao instanciar GenericDao
@@ -151,7 +168,15 @@ public class GenericDao {
 						sb.append(database);
 					}
 				} else {
-					throw new SQLException("SGBD não suportado");
+					if (sgbd.getValor() == 4) {
+						if (database == null) {
+							throw new SQLException("Database não informada");
+						} else {
+							sb.append("jdbc:odbc:Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ="+fileName);
+						}
+					} else {
+						throw new SQLException("SGBD não suportado");	
+					}
 				}
 			}
 		}
